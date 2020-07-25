@@ -19,16 +19,16 @@ export function createContext(defaultValue) {
 					return ctx;
 				};
 
-				this.shouldComponentUpdate = _props => {
+				this.shouldComponentUpdate = (_props) => {
 					if (this.props.value !== _props.value) {
-						subs.some(c => {
+						subs.some((c) => {
 							c.context = _props.value;
 							enqueueRender(c);
 						});
 					}
 				};
 
-				this.sub = c => {
+				this.sub = (c) => {
 					subs.push(c);
 					let old = c.componentWillUnmount;
 					c.componentWillUnmount = () => {

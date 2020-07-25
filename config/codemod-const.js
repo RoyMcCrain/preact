@@ -11,7 +11,7 @@ export default (file, api) => {
 
 	code
 		.find(j.VariableDeclaration)
-		.filter(decl => {
+		.filter((decl) => {
 			for (let i = decl.value.declarations.length; i--; ) {
 				let node = decl.value.declarations[i],
 					name = node.id && node.id.name,
@@ -35,9 +35,9 @@ export default (file, api) => {
 	code
 		.find(j.Identifier)
 		.filter(
-			path => path.value.name && constants.hasOwnProperty(path.value.name)
+			(path) => path.value.name && constants.hasOwnProperty(path.value.name)
 		)
-		.replaceWith(path => (found++, constants[path.value.name]));
+		.replaceWith((path) => (found++, constants[path.value.name]));
 
 	return found ? code.toSource({ quote: 'single' }) : null;
 };

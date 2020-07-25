@@ -23,7 +23,7 @@ export default (file, api) => {
 			}
 		}
 
-		decl.value.declarations.filter(isPointless).forEach(node => {
+		decl.value.declarations.filter(isPointless).forEach((node) => {
 			if (remove === false) {
 				console.log(
 					`> Skipping removal of undefined init for "${node.id.name}": within ${p.value.type}`
